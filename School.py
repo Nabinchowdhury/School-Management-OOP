@@ -22,7 +22,7 @@ class School:
             print(f'No class is available for {classroom.name} currently')
 
     def __repr__(self) -> str:
-        print(f'{self.name} has classrooms')
+        print(f'------------{self.name} has classrooms-------------')
         for key, value in self.classrooms.items():
             print(key, value)
         return ''
