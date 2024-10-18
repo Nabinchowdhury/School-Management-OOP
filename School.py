@@ -24,7 +24,15 @@ class School:
     def __repr__(self) -> str:
         print(f'------------{self.name} has classrooms-------------')
         for key, value in self.classrooms.items():
-            print(key, value)
+            print(key)
+
+        print(f'---------students---------')
+        for student in self.classrooms['class_10'].students:
+            print(student)
+
+        print(f'---------subjects---------')
+        for subject in self.classrooms['class_10'].subjects:
+            print(subject.name)
         return ''
     
 class Classroom:
@@ -39,11 +47,26 @@ class Classroom:
         student.id = serial_id
         student.classroom = self.name
         self.students.append(student)
+    
+    def add_subject(self, subject):
+        self.subjects.append(subject)
 
     def __str__(self) -> str:
         return f'{self.name}_jhakanaka_{len(self.students)}'
+    
     
     # TODO: sort students by grade
     def get_top_students(self):
         pass
 
+class Subject:
+    def __init__(self, name, teacher) -> None:
+        self.name = name
+        self.teacher = teacher
+        self.max_mark = 100
+        self.pass_mark = 33
+
+    def exam(self, students):
+        for student in students:
+            mark = self.teacher.evaluate_exam()
+            student.marks[self.name] = mark
