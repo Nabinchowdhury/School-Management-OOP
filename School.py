@@ -6,9 +6,13 @@ class School:
         self.address = address
         #compositions
         self.classrooms = {} #dictionary
+        self.teachers = {} #dictionary
     
     def add_classroom(self, classroom):
         self.classrooms[classroom.name] = classroom
+
+    def add_classroom(self, teacher):
+        self.teachers[teacher.subject] = teacher
     
     def student_admission(self, student, classroom_name):
         if classroom_name in self.classrooms:
@@ -23,7 +27,8 @@ class Classroom:
         self.students = []
     
     def add_student(self, student):
-        serial_id = f'{self.name}_{len(self.students)+1}'
+        serial_id = f'{student.name}_{len(self.students)+1}'
+        student.id = serial_id
         self.students.append(student)
 
     def __str__(self) -> str:
