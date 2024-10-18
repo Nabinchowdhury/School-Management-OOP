@@ -34,5 +34,5 @@ class Student(Person):
     def id(self, value):
         self.__id = value
 
-st = Student('nabin')
-# print(st.name)
+    def __repr__(self):
+        return f'Student {self.name}, id {self.id}, classroom {self.classroom}, grade {self.grade}, subjects {self.subjects}, marks {self.marks}'
