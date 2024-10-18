@@ -21,14 +21,15 @@ class School:
             print(f'No class is available for {classroom_name} currently')
 
 class Classroom:
-    def __init__(self, class_name) -> None:
-        self.classroom_name = class_name
+    def __init__(self, name) -> None:
+        self.name = name
         #compositions
         self.students = []
     
     def add_student(self, student):
-        serial_id = f'{student.name}_{len(self.students)+1}'
+        serial_id = f'{self.name}_{len(self.students)+1}'
         student.id = serial_id
+        student.classroom = self.name
         self.students.append(student)
 
     def __str__(self) -> str:
